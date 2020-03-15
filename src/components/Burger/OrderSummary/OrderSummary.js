@@ -1,12 +1,13 @@
 import React from 'react';
 import Aux from '../../../hoc/Auxiliary';
+import Button from '../../UI/Button/Button';
 
 
 const orderSummary = (props) => {
-    console.log("test",props.ingredients);
+    console.log("test", props.ingredients);
     const ingredientsSummary = Object.keys(props.ingredients)
         .map(key => {
-           
+
             return <li>{key}:{props.ingredients[key]}</li>
         });
     return (
@@ -16,9 +17,10 @@ const orderSummary = (props) => {
             <ul>
                 {ingredientsSummary}
             </ul>
+            <p><strong>Total price :{props.totalPrice}</strong> </p>
             <p>Continue to check out?</p>
-            <button>CANCEL</button>
-            <button>CONTINUE</button>
+            <Button btnType="Danger" clicked={props.purchaseCancel}>CANCEL</Button>
+            <Button btnType="Success" clicked={props.purchaseContinue}>CONTINUE</Button>
         </Aux>
     );
 }
